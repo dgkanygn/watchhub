@@ -44,7 +44,9 @@ export const ChatPanel = ({
                                         <span className={`text-[10px] sm:text-xs font-bold ${msg.user === currentUsername ? 'text-[var(--accent-light)]' : 'text-zinc-300'}`}>
                                             {msg.user}
                                         </span>
-                                        <span className="text-[9px] sm:text-[10px] text-zinc-500">{msg.time}</span>
+                                        <span className="text-[9px] sm:text-[10px] text-zinc-500">
+                                            {new Date(msg.id).toLocaleTimeString('tr-TR', { hour: '2-digit', minute: '2-digit' })}
+                                        </span>
                                     </div>
                                     <div className={`px-2.5 sm:px-4 py-1.5 sm:py-2 rounded-xl sm:rounded-2xl max-w-[90%] sm:max-w-[85%] text-xs sm:text-sm break-words
                                         ${msg.user === currentUsername

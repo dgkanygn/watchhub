@@ -66,7 +66,7 @@ io.on("connection", (socket) => {
             id: Date.now(),
             user: "Sistem",
             text: `${user.username} odaya katıldı.`,
-            time: new Date().toLocaleTimeString("tr-TR", { hour: "2-digit", minute: "2-digit" }),
+            time: Date.now(),
             isSystem: true
         });
 
@@ -88,7 +88,7 @@ io.on("connection", (socket) => {
             id: Date.now(),
             user: user.username,
             text: message,
-            time: new Date().toLocaleTimeString("tr-TR", { hour: "2-digit", minute: "2-digit" }),
+            time: Date.now(),
             isSystem: false
         };
 
@@ -162,7 +162,7 @@ io.on("connection", (socket) => {
             id: Date.now(),
             user: "Sistem",
             text: `${currentUser.username}, kontrolü ${targetUser.username} kullanıcısına verdi.`,
-            time: new Date().toLocaleTimeString("tr-TR", { hour: "2-digit", minute: "2-digit" }),
+            time: Date.now(),
             isSystem: true
         });
     });
@@ -201,7 +201,7 @@ io.on("connection", (socket) => {
             id: Date.now(),
             user: "Sistem",
             text: `${targetUser.username} odadan atıldı.`,
-            time: new Date().toLocaleTimeString("tr-TR", { hour: "2-digit", minute: "2-digit" }),
+            time: Date.now(),
             isSystem: true
         });
     });
@@ -248,7 +248,7 @@ io.on("connection", (socket) => {
                     id: Date.now(),
                     user: "Sistem",
                     text: `${user.username} odadan ayrıldı.`,
-                    time: new Date().toLocaleTimeString("tr-TR", { hour: "2-digit", minute: "2-digit" }),
+                    time: Date.now(),
                     isSystem: true
                 });
 
