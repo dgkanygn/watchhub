@@ -101,6 +101,9 @@ export default function RoomPage() {
     }, []);
 
     const createPlayer = useCallback((initialVideoId) => {
+
+        console.log(playerRef.current)
+
         if (playerRef.current) return;
 
         playerRef.current = new window.YT.Player('youtube-player', {
@@ -213,19 +216,45 @@ export default function RoomPage() {
             }
         });
 
-        if (!window.YT) {
-            const tag = document.createElement('script');
-            tag.src = "https://www.youtube.com/iframe_api";
-            const firstScriptTag = document.getElementsByTagName('script')[0];
-            firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-        }
+        // YouTube IFrame API yükleme - daha güvenilir yöntem
+        const initYouTubePlayer = () => {
+            // Player div'inin DOM'da olduğundan emin ol
+            const playerDiv = document.getElementById('youtube-player');
+            if (!playerDiv) {
+                console.log('Player div not found, retrying...');
+                setTimeout(initYouTubePlayer, 100);
+                return;
+            }
 
-        window.onYouTubeIframeAPIReady = () => {
-            createPlayer(videoState.videoId);
+            // API hazırsa player'ı oluştur
+            if (window.YT && window.YT.Player) {
+                console.log('YouTube API ready, creating player...');
+                createPlayer(videoState.videoId);
+            } else {
+                console.log('YouTube API not ready, waiting...');
+                setTimeout(initYouTubePlayer, 100);
+            }
         };
 
-        if (window.YT && window.YT.Player) {
-            createPlayer(videoState.videoId);
+        // YouTube API script'ini yükle (eğer yüklenmemişse)
+        if (!window.YT) {
+            // Callback'i global olarak tanımla
+            window.onYouTubeIframeAPIReady = () => {
+                console.log('YouTube IFrame API Ready callback fired');
+                initYouTubePlayer();
+            };
+
+            // Script zaten eklenmişse tekrar ekleme
+            const existingScript = document.querySelector('script[src="https://www.youtube.com/iframe_api"]');
+            if (!existingScript) {
+                const tag = document.createElement('script');
+                tag.src = "https://www.youtube.com/iframe_api";
+                const firstScriptTag = document.getElementsByTagName('script')[0];
+                firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+            }
+        } else {
+            // API zaten yüklüyse direkt başlat
+            initYouTubePlayer();
         }
 
         return () => {
