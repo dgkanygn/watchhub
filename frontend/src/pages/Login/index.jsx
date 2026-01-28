@@ -33,7 +33,7 @@ export default function Login() {
                     <div className="w-20 h-20 bg-gradient-to-tr from-[var(--accent)] to-[var(--coral)] rounded-2xl mx-auto flex items-center justify-center shadow-lg shadow-[var(--accent)]/30 mb-6 transform rotate-3 hover:rotate-6 transition-transform">
                         <FaHeadphones className="text-4xl text-white" />
                     </div>
-                    <h1 className="text-3xl font-bold text-white mb-2">WatchHub</h1>
+                    <h1 className="text-3xl font-bold text-white mb-2">Watchub</h1>
                     <p className="text-zinc-400">Arkadaşlarınla video izle ve sohbet et.</p>
                     <div className="mt-4 inline-flex items-center gap-2 px-4 py-2 bg-[var(--accent)]/10 border border-[var(--accent)]/30 rounded-full">
                         <FaPlus className="text-[var(--accent-light)] text-xs" />

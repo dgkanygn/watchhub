@@ -12,7 +12,7 @@ export const RoomHeader = ({ status, username }) => {
                     <FaHeadphones className="text-lg sm:text-xl text-white" />
                 </div>
                 <div className="flex items-center gap-2 sm:gap-3">
-                    <h1 className="text-lg sm:text-2xl md:text-3xl font-bold text-white">WatchHub</h1>
+                    <h1 className="text-lg sm:text-2xl md:text-3xl font-bold text-white">Watchub</h1>
                     {status === 'active' && (
                         <span className="flex h-2 w-2 sm:h-3 sm:w-3 relative flex-shrink-0">
                             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
