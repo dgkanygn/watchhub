@@ -16,7 +16,7 @@ import {
 // utils
 import { extractVideoId } from './utils';
 
-const SOCKET_URL = 'http://localhost:3001';
+const SOCKET_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
 
 export default function RoomPage() {
     const params = useParams();
