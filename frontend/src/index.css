@@ -1,0 +1,119 @@
+@import "tailwindcss";
+
+:root {
+    /* Modern Deep Dark Theme */
+    --background: #0F1117;
+    --foreground: #E4E4E7;
+
+    --card-bg: #181B25;
+    --card-hover: #222632;
+    --border-color: rgba(255, 255, 255, 0.06);
+
+    /* Vibrant Accents */
+    --accent: #7C3AED;
+    /* Violet 600 */
+    --accent-hover: #6D28D9;
+    --accent-light: #A78BFA;
+
+    --coral: #F43F5E;
+    /* Rose 500 */
+    --coral-hover: #E11D48;
+    --coral-light: #FB7185;
+
+    /* Glassmorphism */
+    --glass-bg: rgba(24, 27, 37, 0.6);
+    --glass-border: rgba(255, 255, 255, 0.08);
+}
+
+@theme inline {
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+    --color-primary: var(--accent);
+    --color-coral: var(--coral);
+    --color-card: var(--card-bg);
+    --color-card-hover: var(--card-hover);
+    --color-border-subtle: var(--border-color);
+    --font-sans: var(--font-poppins);
+    --font-mono: var(--font-poppins);
+
+    --animate-fade-in: fadeIn 0.5s ease-out forwards;
+    --animate-slide-up: slideUp 0.5s ease-out forwards;
+
+    /* Custom breakpoint for extra small devices */
+    --breakpoint-xs: 480px;
+}
+
+body {
+    background: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-poppins), system-ui, -apple-system, sans-serif;
+    /* Add a subtle gradient background mesh via CSS if we want, or keep it in components */
+    background-image:
+        radial-gradient(circle at 15% 50%, rgba(124, 58, 237, 0.08), transparent 25%),
+        radial-gradient(circle at 85% 30%, rgba(244, 63, 94, 0.08), transparent 25%);
+    background-attachment: fixed;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+@media (min-width: 640px) {
+    ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+    }
+}
+
+::-webkit-scrollbar-track {
+    background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+    background: #333340;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent);
+}
+
+/* Mobile touch improvements */
+@media (max-width: 640px) {
+    html {
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    button,
+    a {
+        touch-action: manipulation;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
